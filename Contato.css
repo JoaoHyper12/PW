@@ -1,0 +1,174 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fdfdfd;
+  color: #333;
+}
+
+/* Cabeçalho */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #000000;
+  border-bottom: 5px solid #000;
+}
+
+.logo img {
+  height: 80px;
+}
+
+.icons .icon {
+  width: 30px;
+  margin-left: 15px;
+}
+
+.logo-subtitle {
+  display: block;
+  font-family: 'Playwrite México Guides', sans-serif;
+  font-size: 26px;
+  color: #d32f2f; /* Cor vermelha, como o logotipo 2K */
+  text-align: center;
+  margin-top: 5px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.navigation ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 10px;
+  background-color: #f6f6f6;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navigation a.active {
+  background-color: #121c20;
+  color: white;
+}
+
+.menu-container {
+  display: flex;
+  justify-content: center;
+}
+
+.menu {
+  display: flex;
+  gap: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.menu a {
+  padding: 12px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #000;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+
+.menu a:hover {
+  background-color: #f0f0f0;
+}
+
+.menu a.active {
+  background-color: #1e1e1e;
+  color: white;
+}
+
+/* Página de contato */
+.contato-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 40px;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.info {
+  max-width: 400px;
+}
+
+.info h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.info p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.contato-detalhes p {
+  margin-bottom: 15px;
+}
+
+/* Formulário */
+.formulario form {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+}
+
+.formulario input,
+.formulario textarea {
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  width: 100%;
+}
+
+.formulario button {
+  padding: 12px;
+  background-color: #1e1e1e;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.formulario button:hover {
+  background-color: #333;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .contato-container {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px;
+  }
+
+  .formulario form {
+    width: 100%;
+  }
+}
+
+@font-face {
+  font-family: 'Playwrite México Guides';
+  src: url('Jaro/Jaro-Regular-VariableFont_opsz.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
