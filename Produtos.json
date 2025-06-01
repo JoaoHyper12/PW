@@ -1,0 +1,267 @@
+[
+  {
+    "id": 1,
+    "nome": "Jordan Point Lane",
+    "imagem": "Imagens/Bucks.avif",
+    "preco_original": 139.00,
+    "preco_desconto": 125.10,
+    "descricao": "A camisola Icon Edition representa a herança rica e a identidade emblemática do franchise, expressas através das cores.",
+    "categoria": "Camisas"
+  },
+  {
+    "id": 2,
+    "nome": "Chicago Bulls Jersey",
+    "imagem": "Imagens/Bulls.avif",
+    "preco_original": 139.00,
+    "preco_desconto": 125.10,
+    "descricao": "Camisola clássica dos Chicago Bulls.",
+    "categoria": "Camisas"
+  },
+  {
+    "id": 3,
+    "nome": "Celtics White Jersey",
+    "imagem": "Imagens/Celtics White.avif",
+    "preco_original": 139.00,
+    "preco_desconto": 125.10,
+    "descricao": "Camisola branca dos Boston Celtics.",
+    "categoria": "Camisas"
+  },
+  {
+    "id": 4,
+    "nome": "Dallas Mavericks Jersey",
+    "imagem": "Imagens/Dallas.avif",
+    "preco_original": 139.00,
+    "preco_desconto": 125.10,
+    "descricao": "Camisola dos Dallas Mavericks.",
+    "categoria": "Camisas"
+  },
+  {
+    "id": 5,
+    "nome": "Book 1 Moss Point",
+    "imagem": "Imagens/Book 1 Moss Point.avif",
+    "preco_original": 150.00,
+    "preco_desconto": 135.00,
+    "descricao": "Sapatilhas de basquete de alto desempenho.",
+    "categoria": "Sapatilhas"
+  },
+  {
+    "id": 6,
+    "nome": "NBA All Time Premier",
+    "imagem": "Imagens/NBA All Time Premier.webp",
+    "preco_original": 80.00,
+    "preco_desconto": 72.00,
+    "descricao": "Bola oficial da NBA para competição.",
+    "categoria": "Bolas"
+  },
+
+   {
+    "id": 7,
+    "nome": "Book 1 Moss Point",
+    "imagem": "Imagens/lakers.avif",
+    "preco_original": 150.00,
+    "preco_desconto": 135.00,
+    "descricao": "Sapatilhas de basquete de alto desempenho.",
+    "categoria": "Camisas"
+  },
+
+   {
+    "id": 8,
+    "nome": "Book 1 Moss Point",
+    "imagem": "Imagens/lakers black.avif",
+    "preco_original": 150.00,
+    "preco_desconto": 135.00,
+    "descricao": "Sapatilhas de basquete de alto desempenho.",
+    "categoria": "Camisas"
+  },
+
+   {
+    "id": 9,
+    "nome": "Book 1 Moss Point",
+    "imagem": "Imagens/warriors white.avif",
+    "preco_original": 150.00,
+    "preco_desconto": 135.00,
+    "descricao": "Sapatilhas de basquete de alto desempenho.",
+    "categoria": "Camisas"
+  },
+
+   {
+    "id": 10,
+    "nome": "Book 1 Moss Point",
+    "imagem": "Imagens/warriors blue.avif",
+    "preco_original": 150.00,
+    "preco_desconto": 135.00,
+    "descricao": "Sapatilhas de basquete de alto desempenho.",
+    "categoria": "Camisas"
+  },
+
+   {
+    "id": 11,
+    "nome": "Book 1 Moss Point",
+    "imagem": "Imagens/celtics.avif",
+    "preco_original": 150.00,
+    "preco_desconto": 135.00,
+    "descricao": "Sapatilhas de basquete de alto desempenho.",
+    "categoria": "Camisas"
+  },
+
+   {
+    "id": 12,
+    "nome": "Book 1 Moss Point",
+    "imagem": "Imagens/Book 1 Moss Point.avif",
+    "preco_original": 150.00,
+    "preco_desconto": 135.00,
+    "descricao": "Sapatilhas de basquete de alto desempenho.",
+    "categoria": "Sapatilhas"
+  },
+
+   {
+    "id": 13,
+    "nome": "Book 1 Moss Point",
+    "imagem": "Imagens/Book 1 Moss Point.avif",
+    "preco_original": 150.00,
+    "preco_desconto": 135.00,
+    "descricao": "Sapatilhas de basquete de alto desempenho.",
+    "categoria": "Sapatilhas"
+  },
+
+   {
+    "id": 14,
+    "nome": "Book 1 Moss Point",
+    "imagem": "Imagens/Book 1 Moss Point.avif",
+    "preco_original": 150.00,
+    "preco_desconto": 135.00,
+    "descricao": "Sapatilhas de basquete de alto desempenho.",
+    "categoria": "Sapatilhas"
+  },
+
+   {
+    "id": 15,
+    "nome": "Book 1 Moss Point",
+    "imagem": "Imagens/Book 1 Moss Point.avif",
+    "preco_original": 150.00,
+    "preco_desconto": 135.00,
+    "descricao": "Sapatilhas de basquete de alto desempenho.",
+    "categoria": "Sapatilhas"
+  },
+
+   {
+    "id": 16,
+    "nome": "Book 1 Moss Point",
+    "imagem": "Imagens/Book 1 Moss Point.avif",
+    "preco_original": 150.00,
+    "preco_desconto": 135.00,
+    "descricao": "Sapatilhas de basquete de alto desempenho.",
+    "categoria": "Sapatilhas"
+  },
+
+   {
+    "id": 5,
+    "nome": "Book 1 Moss Point",
+    "imagem": "Imagens/Book 1 Moss Point.avif",
+    "preco_original": 150.00,
+    "preco_desconto": 135.00,
+    "descricao": "Sapatilhas de basquete de alto desempenho.",
+    "categoria": "Sapatilhas"
+  },
+
+   {
+    "id": 5,
+    "nome": "Book 1 Moss Point",
+    "imagem": "Imagens/Book 1 Moss Point.avif",
+    "preco_original": 150.00,
+    "preco_desconto": 135.00,
+    "descricao": "Sapatilhas de basquete de alto desempenho.",
+    "categoria": "Sapatilhas"
+  },
+
+   {
+    "id": 5,
+    "nome": "Book 1 Moss Point",
+    "imagem": "Imagens/Book 1 Moss Point.avif",
+    "preco_original": 150.00,
+    "preco_desconto": 135.00,
+    "descricao": "Sapatilhas de basquete de alto desempenho.",
+    "categoria": "Sapatilhas"
+  },
+
+   {
+    "id": 5,
+    "nome": "Book 1 Moss Point",
+    "imagem": "Imagens/Book 1 Moss Point.avif",
+    "preco_original": 150.00,
+    "preco_desconto": 135.00,
+    "descricao": "Sapatilhas de basquete de alto desempenho.",
+    "categoria": "Sapatilhas"
+  },
+  
+   {
+    "id": 5,
+    "nome": "Book 1 Moss Point",
+    "imagem": "Imagens/Book 1 Moss Point.avif",
+    "preco_original": 150.00,
+    "preco_desconto": 135.00,
+    "descricao": "Sapatilhas de basquete de alto desempenho.",
+    "categoria": "Sapatilhas"
+  },
+
+   {
+    "id": 5,
+    "nome": "Book 1 Moss Point",
+    "imagem": "Imagens/Book 1 Moss Point.avif",
+    "preco_original": 150.00,
+    "preco_desconto": 135.00,
+    "descricao": "Sapatilhas de basquete de alto desempenho.",
+    "categoria": "Sapatilhas"
+  },
+
+   {
+    "id": 5,
+    "nome": "Book 1 Moss Point",
+    "imagem": "Imagens/Book 1 Moss Point.avif",
+    "preco_original": 150.00,
+    "preco_desconto": 135.00,
+    "descricao": "Sapatilhas de basquete de alto desempenho.",
+    "categoria": "Sapatilhas"
+  },
+
+   {
+    "id": 5,
+    "nome": "Book 1 Moss Point",
+    "imagem": "Imagens/Book 1 Moss Point.avif",
+    "preco_original": 150.00,
+    "preco_desconto": 135.00,
+    "descricao": "Sapatilhas de basquete de alto desempenho.",
+    "categoria": "Sapatilhas"
+  },
+
+   {
+    "id": 5,
+    "nome": "Book 1 Moss Point",
+    "imagem": "Imagens/Book 1 Moss Point.avif",
+    "preco_original": 150.00,
+    "preco_desconto": 135.00,
+    "descricao": "Sapatilhas de basquete de alto desempenho.",
+    "categoria": "Sapatilhas"
+  },
+
+   {
+    "id": 5,
+    "nome": "Book 1 Moss Point",
+    "imagem": "Imagens/Book 1 Moss Point.avif",
+    "preco_original": 150.00,
+    "preco_desconto": 135.00,
+    "descricao": "Sapatilhas de basquete de alto desempenho.",
+    "categoria": "Sapatilhas"
+  },
+
+   {
+    "id": 5,
+    "nome": "Book 1 Moss Point",
+    "imagem": "Imagens/Book 1 Moss Point.avif",
+    "preco_original": 150.00,
+    "preco_desconto": 135.00,
+    "descricao": "Sapatilhas de basquete de alto desempenho.",
+    "categoria": "Sapatilhas"
+  }
+
+]

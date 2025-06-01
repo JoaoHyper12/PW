@@ -5,28 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Loja - 2K Basquete</title>
   <link rel="stylesheet" href="loja.css" />
+
 </head>
 <body>
 
   <header class="header">
     <div class="logo">
-      <img src="Logótipo.png" alt="2K Basquete">
+      <img src="Imagens/Logótipo.png" alt="2K Basquete">
       <span class="logo-subtitle">BASQUETE</span>
     </div>
 
     <nav class="navigation">
       <ul>
-    <li><a href="Página Inicial.html">Página Inicial</a></li>
-    <li><a href="loja.html" class="active">Loja</a></li>
-    <li><a href="Contato.html">Contato</a></li>
-    <li><a href="#">Webgrafia</a></li>
-  </ul>
-</nav>
-
+        <li><a href="Página Inicial.html">Página Inicial</a></li>
+        <li><a href="loja.html" class="active">Loja</a></li>
+        <li><a href="Contato.html">Contato</a></li>
+        <li><a href="#">Webgrafia</a></li>
+      </ul>
+    </nav>
 
     <div class="icons">
-      <img src="Avatar.png" alt="Perfil" class="icon">
-      <img src="CestaCompras.png" alt="Carrinho" class="icon">
+      <img src="Imagens/Avatar.png" alt="Perfil" class="icon">
+      <img src="Imagens/CestaCompras.png" alt="Carrinho" class="icon">
     </div>
   </header>
 
@@ -41,132 +41,63 @@
         <div class="filter-group">
           <strong>Categoria</strong>
           <ul>
-            <li><a href="#">Todos</a></li>
-            <li><a href="Camisas.html">Camisas</a></li>
-            <li><a href="Sapatilhas.html">Sapatilhas</a></li>
-            <li><a href="Cestos.html">Cestos</a></li>
-            <li><a href="Bolas.html">Bolas</a></li>
+            <li><a href="#" onclick="filtrarPorCategoria('Todos')">Todos</a></li>
+            <li><a href="#" onclick="filtrarPorCategoria('Camisas')">Camisas</a></li>
+            <li><a href="#" onclick="filtrarPorCategoria('Sapatilhas')">Sapatilhas</a></li>
+            <li><a href="#" onclick="filtrarPorCategoria('Cestos')">Cestos</a></li>
+            <li><a href="#" onclick="filtrarPorCategoria('Bolas')">Bolas</a></li>
           </ul>
         </div>
       </aside>
 
-      <!-- Lista de produtos -->
+      <!-- Lista de produtos (será preenchida pelo JavaScript) -->
       <section class="product-list">
-        <div class="product">
-          <img src="Bucks.avif" alt="Giannis Antetokounmpo">
-        </div>
-
-        <div class="product">
-          <img src="Lakers Black.avif" alt="Clippers">
-        </div>
-
-        <div class="product">
-          <img src="Lakers.avif" alt="Miami Heat">
-        </div>
-        
-        <div class="product">
-          <img src="Celtics.avif" alt="Giannis Antetokounmpo">
-        </div>
-
-        <div class="product">
-          <img src="Warriors Blue.avif" alt="Clippers">
-        </div>
-
-        <div class="product">
-          <img src="Warriors White.avif" alt="Miami Heat">
-        </div>
-
-        <div class="product">
-          <img src="Book 1 Moss Point.avif" alt="Giannis Antetokounmpo">
-        </div>
-
-        <div class="product">
-          <img src="Nike G.T. Hustle 3.avif" alt="Clippers">
-        </div>
-
-        <div class="product">
-          <img src="LeBron NXXT Genisus.avif" alt="Miami Heat">
-        </div>
-
-        <div class="product">
-          <img src="Tatum 3 Pink.avif" alt="Giannis Antetokounmpo">
-        </div>
-
-        <div class="product">
-          <img src="LeBron Witness VIII.avif" alt="Clippers">
-        </div>
-
-        <div class="product">
-          <img src="A One Leo Lights.avif" alt="Miami Heat">
-        </div>
-        
-        <div class="product">
-          <img src="KD17 Christmas.avif" alt="Giannis Antetokounmpo">
-        </div>
-
-        <div class="product">
-          <img src="LeBron XXII Mogul.avif" alt="Clippers">
-        </div>
-
-        <div class="product">
-          <img src="Jordan Heir Series Paolo.avif" alt="Miami Heat">
-        </div>
-
-        <div class="product">
-          <img src="cesto1.jpg" alt="Giannis Antetokounmpo">
-        </div>
-
-        <div class="product">
-          <img src="cesto3.webp" alt="Clippers">
-        </div>
-
-        <div class="product">
-          <img src="cesto4.webp" alt="Miami Heat">
-        </div>
-
-        <div class="product">
-          <img src="cesto5.jpg" alt="Giannis Antetokounmpo">
-        </div>
-
-        <div class="product">
-          <img src="Wilson NCAA Era Orange.webp" alt="Giannis Antetokounmpo">
-        </div>
-
-        <div class="product">
-          <img src="Wilson Original.webp" alt="Clippers">
-        </div>
-
-        <div class="product">
-          <img src="Wilson Rock.webp" alt="Miami Heat">
-        </div>
-
-        <div class="product">
-          <img src="Wilson WNBA.webp" alt="Giannis Antetokounmpo">
-        </div>
-
-        <div class="product">
-          <img src="Spalding Christmas.webp" alt="Clippers">
-        </div>
-
-        <div class="product">
-          <img src="Lebron James Lakers.webp" alt="Miami Heat">
-        </div>
-        
-        <div class="product">
-          <img src="Jordan Grey and Red.webp" alt="Giannis Antetokounmpo">
-        </div>
-
-        <div class="product">
-          <img src="NBA All Time Premier.webp" alt="Clippers">
-        </div>
-
-        <div class="product">
-          <img src="Forge.webp" alt="Miami Heat">
-        </div>
-        
+        <!-- Os produtos aparecerão aqui dinamicamente -->
       </section>
     </div>
   </main>
+
+  <script>
+    // Função para carregar e filtrar produtos
+    function carregarProdutos(categoria = 'Todos') {
+      fetch('produtos.json')
+        .then(response => response.json())
+        .then(produtos => {
+          const productList = document.querySelector('.product-list');
+          productList.innerHTML = '';
+
+          // Filtrar produtos se necessário
+          const produtosExibidos = categoria === 'Todos' 
+            ? produtos 
+            : produtos.filter(p => p.categoria === categoria);
+
+          // Adicionar cada produto à lista
+          produtosExibidos.forEach(produto => {
+            const productDiv = document.createElement('div');
+            productDiv.className = 'product';
+            productDiv.innerHTML = `
+              <a href="Bucks.html?id=${produto.id}">
+                <img src="${produto.imagem}" alt="${produto.nome}">
+                <h3>${produto.nome}</h3>
+                <p class="price">€${produto.preco_desconto.toFixed(2)} <del>€${produto.preco_original.toFixed(2)}</del></p>
+              </a>
+            `;
+            productList.appendChild(productDiv);
+          });
+        })
+        .catch(error => console.error('Erro ao carregar produtos:', error));
+    }
+
+    // Função de filtro
+    function filtrarPorCategoria(categoria) {
+      carregarProdutos(categoria);
+    }
+
+    // Carregar produtos quando a página carregar
+    document.addEventListener('DOMContentLoaded', () => {
+      carregarProdutos();
+    });
+  </script>
 
 </body>
 </html>
