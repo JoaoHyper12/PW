@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Detalhes do Produto - 2K Basquete</title>
+  <link rel="stylesheet" href="Detalhes Produto.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="logo">
+      <img src="Imagens/Logótipo.png" alt="2K Basquete">
+      <span class="logo-subtitle">BASQUETE</span>
+    </div>
+
+    <nav class="navigation">
+      <ul>
+        <li><a href="Página Inicial.html">Página Inicial</a></li>
+        <li><a href="loja.html" class="active">Loja</a></li>
+        <li><a href="Contato.html">Contato</a></li>
+        <li><a href="Webgrafia.html">Webgrafia</a></li>
+      </ul>
+    </nav>
+
+    <div class="icons">
+      <img src="Imagens/Avatar.png" alt="Perfil" class="icon">
+      <a href="carrinho.html" style="position: relative;">
+        <img src="Imagens/CestaCompras.png" alt="Carrinho" class="icon">
+        <span id="cart-count" style="position: absolute; top: -8px; right: -8px; background: red; color: white; border-radius: 50%; font-size: 12px; padding: 2px 6px; display: none;">0</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="product-page">
+    <div class="product-image">
+      <img src="" alt="" id="produto-imagem">
+    </div>
+    <div class="product-details">
+      <h1 id="produto-nome"></h1>
+      <p class="price"><del id="preco-original"></del> <strong id="preco-desconto"></strong></p>
+      <p class="description" id="produto-descricao"></p>
+      <div class="quantity-selector">
+        <label for="qty">Quantidade *</label><br>
+        <button class="qty-btn" id="decrease">-</button>
+        <input type="number" id="qty" value="1" min="1">
+        <button class="qty-btn" id="increase">+</button>
+      </div>
+      <div class="buttons">
+        <button class="btn-cart">Adicionar ao carrinho</button>
+        <button class="btn-buy">Comprar</button>
+        <button id="backButton" class="back-button">← Voltar para Categoria</button>
+      </div>
+    </div>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBfHgNcgZd6FuKHUH7mmebC7oJFuX8Ihd8",
+      authDomain: "k-basquete.firebaseapp.com",
+      databaseURL: "https://k-basquete-default-rtdb.firebaseio.com",
+      projectId: "k-basquete",
+      storageBucket: "k-basquetefirebasestorage.app",
+      messagingSenderId: "90888323138",
+      appId: "1:90888323138:web:a12465021d65934ea9addb",
+      measurementId: "G-KLZB31L8SG"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    function escutarContadorCarrinho() {
+      db.collection('carrinho').onSnapshot(snapshot => {
+        let total = 0;
+        snapshot.forEach(doc => {
+          const dados = doc.data();
+          total += dados.quantidade || 0;
+        });
+
+        const contador = document.getElementById('cart-count');
+        if (total > 0) {
+          contador.textContent = total;
+          contador.style.display = 'inline-block';
+        } else {
+          contador.style.display = 'none';
+        }
+      }, error => {
+        console.error('Erro ao escutar carrinho:', error);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      escutarContadorCarrinho();
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const produtoId = urlParams.get('id');
+      const categoria = urlParams.get('categoria') || 'Todos';
+
+      if (produtoId) {
+        fetch('produtos.json')
+          .then(response => response.json())
+          .then(produtos => {
+            const produto = produtos.find(p => p.id == produtoId);
+            if (produto) {
+              document.title = produto.nome + " - 2K Basquete";
+              document.getElementById('produto-imagem').src = produto.imagem;
+              document.getElementById('produto-imagem').alt = produto.nome;
+              document.getElementById('produto-nome').textContent = produto.nome;
+              document.getElementById('preco-original').textContent = `€${produto.preco_original.toFixed(2)}`;
+              document.getElementById('preco-desconto').textContent = `€${produto.preco_desconto.toFixed(2)}`;
+              document.getElementById('produto-descricao').textContent = produto.descricao;
+            }
+          })
+          .catch(error => toastr.error('Erro ao carregar produto: ' + error));
+      }
+
+      document.getElementById('decrease').addEventListener('click', () => {
+        const input = document.getElementById('qty');
+        if (parseInt(input.value) > 1) input.value = parseInt(input.value) - 1;
+      });
+
+      document.getElementById('increase').addEventListener('click', () => {
+        const input = document.getElementById('qty');
+        input.value = parseInt(input.value) + 1;
+      });
+
+      document.querySelector('.btn-cart').addEventListener('click', async () => {
+        const id = produtoId;
+        const nome = document.getElementById('produto-nome').textContent;
+        const preco = parseFloat(document.getElementById('preco-desconto').textContent.replace('€',''));
+        const imagem = document.getElementById('produto-imagem').src;
+        const quantidade = parseInt(document.getElementById('qty').value);
+
+        const produtoRef = db.collection('carrinho').doc(id);
+
+        try {
+          const docSnapshot = await produtoRef.get();
+          if (docSnapshot.exists) {
+            const dadosExistentes = docSnapshot.data();
+            await produtoRef.update({
+              quantidade: dadosExistentes.quantidade + quantidade
+            });
+          } else {
+            await produtoRef.set({ id, nome, preco, imagem, quantidade });
+          }
+
+          toastr.success("Produto adicionado ao carrinho!");
+        } catch (error) {
+          console.error("Erro:", error);
+          toastr.error("Erro ao adicionar ao carrinho.");
+        }
+      });
+
+      document.querySelector('.btn-buy').addEventListener('click', () => {
+        window.location.href = 'checkout.html';
+      });
+
+      document.getElementById('backButton').addEventListener('click', () => {
+        window.location.href = `loja.html#${categoria}`;
+      });
+    });
+
+    toastr.options = {
+      closeButton: true,
+      progressBar: true,
+      positionClass: "toast-bottom-right",
+      timeOut: "3000"
+    };
+  </script>
+</body>
+</html>

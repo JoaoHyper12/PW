@@ -53,6 +53,7 @@ body {
   padding: 12px 24px;
   text-decoration: none;
   font-weight: bold;
+  font-family: Arial, sans-serif;
   color: #fff;
   background-color: transparent;
   border-radius: 12px;
@@ -83,6 +84,7 @@ body {
 
 .icon-link {
   position: relative;
+  display: inline-block;
 }
 
 .icon {
@@ -100,90 +102,47 @@ body {
   padding: 2px 6px;
   border-radius: 50%;
   font-weight: bold;
-  display: none; /* Exibe só se houver itens */
+  display: none;
 }
 
-/* Conteúdo da Página de Contato */
-.contato-container {
+/* Conteúdo principal da Webgrafia */
+main.webgrafia-container {
   max-width: 900px;
   margin: 50px auto;
-  padding: 20px;
+  padding: 0 20px;
+  text-align: center;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-  display: flex;
-  gap: 50px;
-  flex-wrap: wrap;
+  padding: 40px 20px;
 }
 
-.info {
-  flex: 1 1 350px;
-}
-
-.info h1 {
+main.webgrafia-container h1 {
+  margin-bottom: 30px;
   font-size: 2rem;
-  margin-bottom: 20px;
   color: #333;
 }
 
-.info p {
-  margin-bottom: 15px;
-  font-size: 1rem;
-}
-
-.contato-detalhes p {
-  margin-bottom: 15px;
-}
-
-/* Formulário */
-.formulario {
-  flex: 1 1 350px;
-}
-
-.formulario form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.formulario input,
-.formulario textarea {
-  padding: 12px;
-  font-size: 1rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  resize: vertical;
-  width: 100%;
-}
-
-.formulario button {
-  background-color: #d32f2f;
+/* Botões da Webgrafia */
+.btn-webgrafia {
+  display: inline-block;
+  margin: 12px 15px;
+  padding: 14px 28px;
+  font-size: 1.1rem;
   color: white;
-  padding: 12px;
-  font-size: 1rem;
+  background-color: #d32f2f;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  text-decoration: none;
   transition: background-color 0.3s ease;
+  min-width: 160px;
 }
 
-.formulario button:hover {
+.btn-webgrafia:hover {
   background-color: #a92727;
 }
 
-/* Responsivo */
-@media (max-width: 768px) {
-  .contato-container {
-    flex-direction: column;
-    margin: 20px;
-  }
-
-  .formulario form {
-    width: 100%;
-  }
-}
-
-/* Fonte customizada */
 @font-face {
   font-family: 'Playwrite México Guides';
   src: url('Jaro/Jaro-Regular-VariableFont_opsz.ttf') format('truetype');

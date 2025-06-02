@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contato - 2K Basquete</title>
-  <link rel="stylesheet" href="contato.css" />
-  <!-- Firebase CDN -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout - 2K Basquete</title>
+  <link rel="stylesheet" href="checkout.css" />
+
+  <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 </head>
@@ -14,7 +15,6 @@
   <!-- Cabeçalho -->
   <header class="header">
     <div class="logo">
-      <a href="Página Inicial.html">
       <img src="Imagens/Logótipo.png" alt="2K Basquete" />
       <span class="logo-subtitle">BASQUETE</span>
     </div>
@@ -23,7 +23,7 @@
       <nav class="menu">
         <a href="Página Inicial.html" class="menu-link">Página Inicial</a>
         <a href="loja.html" class="menu-link">Loja</a>
-        <a href="Contato.html" class="menu-link active">Contato</a>
+        <a href="contato.html" class="menu-link">Contato</a>
         <a href="webgrafia.html" class="menu-link">Webgrafia</a>
       </nav>
     </div>
@@ -39,31 +39,34 @@
     </div>
   </header>
 
-  <!-- Conteúdo principal -->
-  <main class="contato-container">
-    <div class="info">
-      <h1>Com o que posso ajudá-lo?</h1>
-      <p>Caso algo tenha corrido mal, preencha as etapas ao lado.</p>
-      <div class="contato-detalhes">
-        <p><strong>Telefone:</strong><br />(11) 3456-7890</p>
-        <p><strong>Email:</strong><br />info@meusite.com</p>
-        <p><strong>Redes sociais:</strong><br />@lojanba (Instagram, Twitter, Facebook)</p>
-      </div>
-    </div>
+  <!-- Conteúdo da Página -->
+  <main class="checkout-container">
+    <h1>Finalizar Compra</h1>
 
-    <div class="formulario">
-      <form>
-        <input type="text" placeholder="Nome" required />
-        <input type="text" placeholder="Sobrenome" required />
-        <input type="email" placeholder="Email" required />
-        <textarea placeholder="Mensagem" rows="5" required></textarea>
-        <button type="submit">Enviar</button>
-      </form>
-    </div>
+    <form class="checkout-form">
+      <label>Nome completo:</label>
+      <input type="text" required />
+
+      <label>Email:</label>
+      <input type="email" required />
+
+      <label>Endereço:</label>
+      <input type="text" required />
+
+      <label>Número do Cartão:</label>
+      <input type="text" placeholder="0000 0000 0000 0000" required />
+
+      <label>Validade:</label>
+      <input type="month" required />
+
+      <label>CVC:</label>
+      <input type="text" maxlength="3" required />
+
+      <button id="confirmar-pagamento" type="button">Confirmar Pagamento</button>
+    </form>
   </main>
 
   <script>
-    // Configuração Firebase
     const firebaseConfig = {
       apiKey: "AIzaSyBfHgNcgZd6FuKHUH7mmebC7oJFuX8Ihd8",
       authDomain: "k-basquete.firebaseapp.com",
@@ -77,7 +80,6 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
-    // Atualizar contador do carrinho
     function atualizarContadorCarrinho() {
       db.collection('carrinho').get().then(snapshot => {
         let total = 0;
@@ -100,6 +102,13 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       atualizarContadorCarrinho();
+
+      document.getElementById('confirmar-pagamento').addEventListener('click', () => {
+        const produtos = JSON.parse(localStorage.getItem('carrinho')) || [];
+        localStorage.setItem('produtosComprados', JSON.stringify(produtos));
+        localStorage.removeItem('carrinho');
+        window.location.href = 'agradecimento.html';
+      });
     });
   </script>
 </body>

@@ -7,61 +7,112 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #fff;
-  color: #ffffff;
+  color: #222;
 }
 
-/* Cabeçalho */
+/* Cabeçalho da Webgrafia (copiado e ajustado para Página Inicial) */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background-color: #000000;
-  border-bottom: 5px solid #000;
+  background:linear-gradient(to bottom right, #1d3557, #457b9d);
+  border-bottom: 5px solid #5f699a;
+  color: white;
 }
 
 .logo img {
   height: 80px;
 }
 
-.navigation ul {
-  list-style: none;
+.logo a {
+  text-decoration: none !important;
+  color: inherit;
+}
+
+.logo-subtitle {
+  display: block;
+  font-family: 'Playwrite México Guides', sans-serif;
+  font-size: 26px;
+  color: white;
+  text-align: center;
+  margin-top: 5px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none !important;
+
+}
+
+.menu-container {
+  display: flex;
+  justify-content: center;
+}
+
+.menu {
   display: flex;
   gap: 20px;
 }
 
-.navigation a {
+.menu a {
+  padding: 12px 24px;
   text-decoration: none;
-  color: #000;
   font-weight: bold;
-  padding: 10px 15px;
-  border-radius: 10px;
-  background-color: #f6f6f6;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+  color: #fff;
+  background-color: transparent;
+  border-radius: 12px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.navigation a.active {
-  background-color: #121c20;
+.menu a:hover {
+  background-color: #f0f0f0;
+  text-decoration: none !important;
+  color: inherit;
+}
+
+.menu a.active {
+  background-color: #d32f2f;
   color: white;
 }
 
-/* Ícones de perfil e carrinho */
-.icons .icon {
-  width: 30px;
-  margin-left: 15px;
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
-/* Corrigir imagem de fundo e jogadores */
-/* Remova a largura máxima no .banner */
+.icon-link {
+  position: relative;
+  display: inline-block;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: bold;
+  display: none; /* Exibe só se houver itens */
+}
+
+/* Resto do CSS da página inicial */
+
 .banner {
   position: relative;
   width: 100%;
-  height: 100vh; /* Ocupa 100% da altura da tela */
+  height: 100vh;
   overflow: hidden;
 }
 
-/* Faz a imagem preencher a tela inteira */
-/* Faz a imagem preencher a tela inteira */
 .background {
   position: absolute;
   width: 100%;
@@ -74,7 +125,6 @@ body {
   background-size: cover;
 }
 
-/* Seção dos jogadores */
 .players {
   position: absolute;
   top: 0;
@@ -84,39 +134,33 @@ body {
   pointer-events: none;
 }
 
-/* Estilo comum */
 .player {
   position: absolute;
   box-shadow: 0 0 10px rgba(0,0,0,0.4);
   object-fit: cover;
 }
 
-/* Curry - mais acima, na mesma linha que Kobe */
 .player-curry {
   width: 270px;
   height: 340px;
-  top: 100px; /* Alterado para ficar mais acima */
-  left: 800px; /* Alterado para alinhar mais com Kobe */
+  top: 100px;
+  left: 800px;
 }
 
-/* Kobe - na mesma linha que Curry */
 .player-kobe {
   width: 280px;
   height: 360px;
-  top: 100px; /* Na mesma linha que Curry */
-  left: 1100px; /* Posicionando Kobe ao lado de Curry */
+  top: 100px;
+  left: 1100px;
 }
 
-/* Jordan - um pouco mais abaixo de Curry */
 .player-jordan {
   width: 260px;
   height: 330px;
-  top: 400px; /* Alterado para ficar abaixo de Curry */
-  left: 950px; /* Um pouco mais à esquerda, mas ainda ao lado de Curry */
+  top: 400px;
+  left: 950px;
 }
 
-
-/* Seção de produtos */
 .products {
   padding: 40px 20px;
   background-color: #f4f4f4;
@@ -131,7 +175,7 @@ body {
 
 .product-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Layout fluido e responsivo */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
   padding: 20px 40px;
 }
@@ -139,8 +183,6 @@ body {
 .product {
   background-color: #fff;
   padding: 20px;
-
-  
   text-align: center;
 }
 
@@ -149,16 +191,10 @@ body {
   height: auto;
 }
 
-.product h3 {
-  font-size: 18px;
-  margin: 10px 0;
-  color: #000;
-}
-
 .product p {
   font-size: 18px;
   color: #666;
-  text-align: left; 
+  text-align: left;
 }
 
 @font-face {
@@ -166,47 +202,4 @@ body {
   src: url('Jaro/Jaro-Regular-VariableFont_opsz.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-}
-
-.logo-subtitle {
-  display: block;
-  font-family: 'Playwrite México Guides', sans-serif;
-  font-size: 26px;
-  color: #d32f2f; /* Cor vermelha, como o logotipo 2K */
-  text-align: center;
-  margin-top: 5px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.menu-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-}
-
-.menu {
-  display: flex;
-  gap: 20px;
-}
-
-.menu a {
-  padding: 12px 24px;
-  text-decoration: none;
-  font-weight: bold;
-  font-family: Arial, sans-serif;
-  color: #000;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.menu a:hover {
-  background-color: #f0f0f0;
-}
-
-.menu a.active {
-  background-color: #1e1e1e;
-  color: white;
 }

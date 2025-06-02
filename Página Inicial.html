@@ -3,42 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>2K Basquete</title>
+  <title>2K Basquete - Página Inicial</title>
   <link rel="stylesheet" href="Página Inicial.css" />
 </head>
 <body>
-  <!-- Cabeçalho -->
+  <!-- Cabeçalho copiado da Webgrafia -->
   <header class="header">
     <div class="logo">
-      <img src="Imagens/Logótipo.png" alt="2K Basquete">
+      <a href="Página Inicial.html">
+      <img src="Imagens/Logótipo.png" alt="2K Basquete" />
       <span class="logo-subtitle">BASQUETE</span>
     </div>
 
-  <div class="menu-container">
-    <nav class="menu">
-    <a href="Página Inicial.html" class="menu-link active">Página Inicial</a>
-    <a href="loja.html" class="menu-link">Loja</a>
-    <a href="Contato.html"class="menu-link">Contato</a>
-    <a href="#">Webgrafia</a>
-    </nav>
-  </div>
-
-
+    <div class="menu-container">
+      <nav class="menu">
+        <a href="Página Inicial.html" class="menu-link active">Página Inicial</a>
+        <a href="loja.html" class="menu-link">Loja</a>
+        <a href="Contato.html" class="menu-link">Contato</a>
+        <a href="webgrafia.html" class="menu-link">Webgrafia</a>
+      </nav>
+    </div>
 
     <div class="icons">
-      <img src="Imagens/Avatar.png" alt="Perfil" class="icon">
-      <img src="Imagens/CestaCompras.png" alt="Carrinho" class="icon">
+      <a href="perfil.html" class="icon-link">
+        <img src="Imagens/Avatar.png" alt="Perfil" class="icon" />
+      </a>
+      <a href="carrinho.html" class="icon-link cart-wrapper">
+        <img src="Imagens/CestaCompras.png" alt="Carrinho" class="icon" />
+        <span id="cart-count" class="cart-count">0</span>
+      </a>
     </div>
   </header>
 
   <!-- Seção de banner -->
   <main class="banner">
-    <img src="Imagens/Background Inicial.png" alt="Cesta de basquete" class="background">
-
+    <img src="Imagens/Background Inicial.png" alt="Cesta de basquete" class="background" />
     <div class="players">
-      <img src="Imagens/Kobe.webp" alt="Kobe Bryant" class="player player-kobe">
-      <img src="Imagens/Stephen Curry.webp" alt="Stephen Curry" class="player player-curry">
-      <img src="Imagens/Michael Jordan.webp" alt="Michael Jordan" class="player player-jordan">
+      <img src="Imagens/Kobe.webp" alt="Kobe Bryant" class="player player-kobe" />
+      <img src="Imagens/Stephen Curry.webp" alt="Stephen Curry" class="player player-curry" />
+      <img src="Imagens/Michael Jordan.webp" alt="Michael Jordan" class="player player-jordan" />
     </div>
   </main>
 
@@ -46,28 +49,10 @@
   <section class="products">
     <h2>Alguns Produtos</h2>
     <div class="product-list">
-
-      <div class="product">
-        <img src="Imagens/Bulls.avif" alt="Produto 1" />
-        <h3></h3>
-        <p>Bulls</p>
-      </div>
-      <div class="product">
-        <img src="Imagens/Celtics White.avif" alt="Produto 2" />
-        <h3></h3>
-        <p>Celtics</p>
-      </div>
-      <div class="product">
-        <img src="Imagens/Lakers.avif" alt="Produto 3" />
-        <h3></h3>
-        <p>Lakers</p>
-      </div>
-      <div class="product">
-        <img src="Imagens/Dallas.avif" alt="Produto 4" />
-        <h3></h3>
-        <p>Dallas</p>
-      </div>
-
+      <div class="product"><img src="Imagens/Bulls.avif" alt="Produto 1" /><p>Bulls</p></div>
+      <div class="product"><img src="Imagens/Celtics White.avif" alt="Produto 2" /><p>Celtics</p></div>
+      <div class="product"><img src="Imagens/Lakers.avif" alt="Produto 3" /><p>Lakers</p></div>
+      <div class="product"><img src="Imagens/Dallas.avif" alt="Produto 4" /><p>Dallas</p></div>
     </div>
   </section>
 
@@ -76,12 +61,50 @@
     <button>💬 Vamos conversar por chat</button>
   </div>
 
-  <!-- Script de paralaxe para o fundo -->
+  <!-- Script de paralaxe -->
   <script>
     window.addEventListener("scroll", function() {
       const background = document.querySelector(".background");
-      let scrollPosition = window.pageYOffset; // Posição da rolagem
-      background.style.transform = "translateY(" + scrollPosition * 0.5 + "px)"; // Ajuste a velocidade de movimento
+      background.style.transform = "translateY(" + window.pageYOffset * 0.5 + "px)";
+    });
+  </script>
+
+  <!-- Firebase e contador -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBfHgNcgZd6FuKHUH7mmebC7oJFuX8Ihd8",
+      authDomain: "k-basquete.firebaseapp.com",
+      projectId: "k-basquete",
+      storageBucket: "k-basquete.appspot.com",
+      messagingSenderId: "90888323138",
+      appId: "1:90888323138:web:a12465021d65934ea9addb",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    async function atualizarContadorCarrinho() {
+      try {
+        const querySnapshot = await getDocs(collection(db, "carrinho"));
+        let quantidadeTotal = 0;
+        querySnapshot.forEach(doc => {
+          const item = doc.data();
+          quantidadeTotal += item.quantidade || 1;
+        });
+
+        const contador = document.getElementById('cart-count');
+        contador.textContent = quantidadeTotal;
+        contador.style.display = quantidadeTotal > 0 ? 'inline-block' : 'none';
+      } catch (error) {
+        console.error("Erro ao buscar carrinho:", error);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      atualizarContadorCarrinho();
     });
   </script>
 </body>

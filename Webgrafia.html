@@ -3,11 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contato - 2K Basquete</title>
-  <link rel="stylesheet" href="contato.css" />
-  <!-- Firebase CDN -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <title>Webgrafia - 2K Basquete</title>
+  <link rel="stylesheet" href="webgrafia.css" />
 </head>
 <body>
 
@@ -23,8 +20,8 @@
       <nav class="menu">
         <a href="Página Inicial.html" class="menu-link">Página Inicial</a>
         <a href="loja.html" class="menu-link">Loja</a>
-        <a href="Contato.html" class="menu-link active">Contato</a>
-        <a href="webgrafia.html" class="menu-link">Webgrafia</a>
+        <a href="Contato.html" class="menu-link">Contato</a>
+        <a href="webgrafia.html" class="menu-link active">Webgrafia</a>
       </nav>
     </div>
 
@@ -39,31 +36,22 @@
     </div>
   </header>
 
-  <!-- Conteúdo principal -->
-  <main class="contato-container">
-    <div class="info">
-      <h1>Com o que posso ajudá-lo?</h1>
-      <p>Caso algo tenha corrido mal, preencha as etapas ao lado.</p>
-      <div class="contato-detalhes">
-        <p><strong>Telefone:</strong><br />(11) 3456-7890</p>
-        <p><strong>Email:</strong><br />info@meusite.com</p>
-        <p><strong>Redes sociais:</strong><br />@lojanba (Instagram, Twitter, Facebook)</p>
-      </div>
-    </div>
+  <!-- Conteúdo da Webgrafia -->
+  <main class="webgrafia-container">
+    <h1>Webgrafia</h1>
 
-    <div class="formulario">
-      <form>
-        <input type="text" placeholder="Nome" required />
-        <input type="text" placeholder="Sobrenome" required />
-        <input type="email" placeholder="Email" required />
-        <textarea placeholder="Mensagem" rows="5" required></textarea>
-        <button type="submit">Enviar</button>
-      </form>
-    </div>
+    <a href="https://www.nike.com" target="_blank" rel="noopener noreferrer" class="btn-webgrafia">Nike</a>
+    <a href="https://www.jdsports.com" target="_blank" rel="noopener noreferrer" class="btn-webgrafia">JD Sports</a>
+    <a href="https://www.decathlon.pt" target="_blank" rel="noopener noreferrer" class="btn-webgrafia">Decathlon</a>
+    <a href="https://www.topgim.com" target="_blank" rel="noopener noreferrer" class="btn-webgrafia">TOPGIM</a>
+    <a href="https://www.goalinn.com" target="_blank" rel="noopener noreferrer" class="btn-webgrafia">Goalinn</a>
+    <a href="https://www.fruggo.pt" target="_blank" rel="noopener noreferrer" class="btn-webgrafia">Fruggo</a>
   </main>
 
+  <!-- Firebase e script do contador -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
   <script>
-    // Configuração Firebase
     const firebaseConfig = {
       apiKey: "AIzaSyBfHgNcgZd6FuKHUH7mmebC7oJFuX8Ihd8",
       authDomain: "k-basquete.firebaseapp.com",
@@ -77,7 +65,6 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
-    // Atualizar contador do carrinho
     function atualizarContadorCarrinho() {
       db.collection('carrinho').get().then(snapshot => {
         let total = 0;
@@ -102,5 +89,6 @@
       atualizarContadorCarrinho();
     });
   </script>
+
 </body>
 </html>

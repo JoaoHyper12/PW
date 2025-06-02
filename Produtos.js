@@ -1,15 +1,24 @@
-// Função para carregar produtos na loja
 function carregarProdutos() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const categoria = urlParams.get('categoria');
+  
   fetch('produtos.json')
     .then(response => response.json())
     .then(produtos => {
       const productList = document.querySelector('.product-list');
       productList.innerHTML = ''; // Limpa a lista
 
-      produtos.forEach(produto => {
+      // Filtra produtos por categoria se especificado
+      const produtosExibidos = categoria 
+        ? produtos.filter(produto => produto.categoria === categoria)
+        : produtos;
+
+      produtosExibidos.forEach(produto => {
+        // Inclui a categoria atual no link do produto
+        const categoriaParam = categoria ? `&from=${categoria}` : '';
         productList.innerHTML += `
           <div class="product">
-            <a href="Bucks.html?id=${produto.id}">
+            <a href="Detalhes Produto.html?id=${produto.id}${categoriaParam}">
               <img src="${produto.imagem}" alt="${produto.nome}">
               <h3>${produto.nome}</h3>
               <p class="price">€${produto.preco_desconto.toFixed(2)} <del>€${produto.preco_original.toFixed(2)}</del></p>
@@ -17,13 +26,23 @@ function carregarProdutos() {
           </div>
         `;
       });
+
+      // Armazena a categoria atual para uso posterior
+      if (categoria) {
+        sessionStorage.setItem('ultimaCategoria', categoria);
+      }
     });
 }
 
-// Função para carregar detalhes do produto
 function carregarDetalhesProduto() {
   const urlParams = new URLSearchParams(window.location.search);
   const produtoId = urlParams.get('id');
+  const fromCategoria = urlParams.get('from');
+
+  // Se veio de uma categoria específica, armazena no sessionStorage
+  if (fromCategoria) {
+    sessionStorage.setItem('ultimaCategoria', fromCategoria);
+  }
 
   if (produtoId) {
     fetch('produtos.json')
@@ -41,6 +60,22 @@ function carregarDetalhesProduto() {
           document.querySelector('.description').textContent = produto.descricao;
         }
       });
+  }
+}
+
+function setupBackButton() {
+  const backButton = document.getElementById('backButton');
+  if (backButton) {
+    backButton.addEventListener('click', () => {
+      const ultimaCategoria = sessionStorage.getItem('ultimaCategoria');
+      
+      // Verifica se há uma categoria armazenada
+      if (ultimaCategoria) {
+        window.location.href = `loja.html?categoria=${ultimaCategoria}`;
+      } else {
+        window.location.href = 'loja.html';
+      }
+    });
   }
 }
 
@@ -65,7 +100,6 @@ function setupQuantitySelector() {
   }
 }
 
-// Inicializa as funções conforme a página
 document.addEventListener('DOMContentLoaded', function() {
   if (document.querySelector('.product-list')) {
     carregarProdutos(); // Para a página da loja
@@ -74,5 +108,6 @@ document.addEventListener('DOMContentLoaded', function() {
   if (document.querySelector('.product-page')) {
     carregarDetalhesProduto(); // Para a página de detalhes
     setupQuantitySelector();
+    setupBackButton();
   }
 });

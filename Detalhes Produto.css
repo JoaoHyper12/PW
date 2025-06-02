@@ -16,8 +16,8 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background-color: #000000;
-  border-bottom: 5px solid #000;
+  background:linear-gradient(to bottom right, #1d3557, #457b9d);
+  border-bottom: 5px solid #5f699a;
 }
 
 .logo img {
@@ -28,7 +28,7 @@ body {
   display: block;
   font-family: 'Playwrite México Guides', sans-serif;
   font-size: 26px;
-  color: #d32f2f; /* Cor vermelha, como o logotipo 2K */
+  color: white; /* Cor vermelha, como o logotipo 2K */
   text-align: center;
   margin-top: 5px;
   letter-spacing: 2px;
@@ -118,7 +118,6 @@ body {
   box-sizing: border-box;
 }
 
-
 .product {
   background: #fff;
   padding: 50px;
@@ -144,7 +143,6 @@ body {
   font-style: normal;
 }
 
-
 .seta-voltar{
   position: absolute;
   top: 175px; /* distância do topo, ajustável */
@@ -164,7 +162,7 @@ body {
 }
 
 .product-image img {
-  width: 100%;
+  width: 90%;
   max-width: 600px;
   border-radius: 8px;
 }
@@ -263,63 +261,86 @@ body {
 }
 
 /* Estilos básicos (adicione ao seu CSS) */
-    .product-page {
-      display: flex;
-      padding: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .product-image {
-      flex: 1;
-      padding: 20px;
-    }
-    .product-image img {
-      max-width: 100%;
-      border-radius: 8px;
-    }
-    .product-details {
-      flex: 1;
-      padding: 20px;
-    }
-    .price del {
-      color: #999;
-      margin-right: 10px;
-    }
-    .quantity-selector {
-      margin: 20px 0;
-    }
-    .quantity-selector button {
-      padding: 5px 15px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    .quantity-selector input {
-      width: 50px;
-      text-align: center;
-      padding: 5px;
-      margin: 0 5px;
-    }
-    .buttons button {
-      padding: 10px 20px;
-      margin-right: 10px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .btn-cart {
-      background-color: #333;
-      color: white;
-    }
-    .btn-buy {
-      background-color: #e63946;
-      color: white;
-    }
-    .voltar-link {
-      display: inline-block;
-      margin: 20px;
-    }
-    .seta-voltar {
-      width: 30px;
-      height: 30px;
-    }
+.product-page {
+  display: flex;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.product-image {
+  flex: 1;
+  padding: 20px;
+}
+.product-image img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+.product-details {
+  flex: 1;
+  padding: 20px;
+}
+.price del {
+  color: #999;
+  margin-right: 10px;
+}
+.quantity-selector {
+  margin: 20px 0;
+}
+.quantity-selector button {
+  padding: 5px 15px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.quantity-selector input {
+  width: 50px;
+  text-align: center;
+  padding: 5px;
+  margin: 0 5px;
+}
+.buttons button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.btn-cart {
+  background-color: #333;
+  color: white;
+}
+.btn-buy {
+  background-color: #e63946;
+  color: white;
+}
+.voltar-link {
+  display: inline-block;
+  margin: 20px;
+}
+.seta-voltar {
+  width: 30px;
+  height: 30px;
+}
+
+/* Notificação tipo toast no topo */
+.toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #121c20;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 9999;
+}
+
+.toast.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+

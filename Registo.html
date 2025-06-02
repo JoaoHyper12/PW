@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registar - 2K Basquete</title>
+  <link rel="stylesheet" href="Registo-Login.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <div class="logo">
+        <img src="Imagens/Logótipo.png" alt="Logotipo 2K Basquete" />
+        <h1>Basquete</h1>
+      </div>
+    </div>
+    <div class="right-panel">
+      <a href="Página Inicial.html" class="back-arrow">&#8592; Voltar</a>
+      <form id="form-registo">
+        <h2>Registar</h2>
+        <p>Crie sua conta para começar</p>
+        <input type="email" id="email" placeholder="E-mail" required />
+        <input type="password" id="senha" placeholder="Senha" required />
+        <input type="password" id="confirma-senha" placeholder="Confirme a senha" required />
+        <button type="submit">Registar</button>
+
+        <hr class="divider" />
+        <div class="login-redirect">
+          <span>Já tem uma conta?</span>
+          <a href="login.html">Entrar</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBGh2mPk0gV-yuHuL4igjaxv_3pI-uIk3E",
+      authDomain: "neuro-sphere.firebaseapp.com",
+      projectId: "neuro-sphere",
+      storageBucket: "neuro-sphere.firebasestorage.app",
+      messagingSenderId: "153829901586",
+      appId: "1:153829901586:web:8d2b5330c0a5d732489fcb",
+      measurementId: "G-B0QXZYM4BP"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    document.getElementById('form-registo').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const senha = document.getElementById('senha').value;
+      const confirmaSenha = document.getElementById('confirma-senha').value;
+
+      if (senha !== confirmaSenha) {
+        alert("As senhas não coincidem.");
+        return;
+      }
+
+      firebase.auth().createUserWithEmailAndPassword(email, senha)
+        .then(() => {
+          window.location.href = "Página Inicial.html";
+        })
+        .catch(error => {
+          alert(error.message);
+        });
+    });
+  </script>
+</body>
+</html>

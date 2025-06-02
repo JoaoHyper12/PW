@@ -7,7 +7,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
+  background-color: #fff;
   color: #222;
 }
 
@@ -36,7 +36,11 @@ body {
   letter-spacing: 2px;
   text-transform: uppercase;
   text-decoration: none !important;
+}
 
+.logo a {
+  text-decoration: none !important;
+  color: inherit;
 }
 
 .menu-container {
@@ -59,11 +63,6 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.logo a {
-  text-decoration: none !important;
-  color: inherit;
-}
-
 .menu a:hover {
   background-color: #f0f0f0;
   text-decoration: none !important;
@@ -81,13 +80,13 @@ body {
   gap: 16px;
 }
 
-.icon-link {
-  position: relative;
-}
-
 .icon {
   width: 30px;
   height: 30px;
+}
+
+.cart-wrapper {
+  position: relative;
 }
 
 .cart-count {
@@ -100,85 +99,127 @@ body {
   padding: 2px 6px;
   border-radius: 50%;
   font-weight: bold;
-  display: none; /* Exibe só se houver itens */
+  display: none;
 }
 
-/* Conteúdo da Página de Contato */
-.contato-container {
-  max-width: 900px;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-  display: flex;
-  gap: 50px;
-  flex-wrap: wrap;
+/* Conteúdo Carrinho */
+.cart-page {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
 }
 
-.info {
-  flex: 1 1 350px;
-}
-
-.info h1 {
+.cart-page h1 {
+  text-align: center;
+  margin-bottom: 30px;
   font-size: 2rem;
-  margin-bottom: 20px;
-  color: #333;
+  color: #222;
 }
 
-.info p {
-  margin-bottom: 15px;
-  font-size: 1rem;
+.cart-items {
+  margin-top: 20px;
 }
 
-.contato-detalhes p {
-  margin-bottom: 15px;
-}
-
-/* Formulário */
-.formulario {
-  flex: 1 1 350px;
-}
-
-.formulario form {
+.cart-item {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ddd;
 }
 
-.formulario input,
-.formulario textarea {
-  padding: 12px;
+.cart-item img {
+  width: 100px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.item-info {
+  flex: 1;
+}
+
+.item-name {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.item-price,
+.item-qty,
+.item-total {
   font-size: 1rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  resize: vertical;
-  width: 100%;
+  margin-top: 5px;
 }
 
-.formulario button {
-  background-color: #d32f2f;
+/* Total */
+.total {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-top: 30px;
+  text-align: right;
+}
+
+/* Botões */
+.btn-pagar {
+  display: block;
+  margin: 30px auto 0;
+  background-color: #28a745;
   color: white;
-  padding: 12px;
-  font-size: 1rem;
+  padding: 15px 35px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-pagar:hover {
+  background-color: #218838;
+}
+
+.btn-remove {
+  background-color: #dc3545;
+  color: white;
+  padding: 8px 14px;
   border: none;
   border-radius: 6px;
+  margin-top: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-size: 0.95rem;
+  transition: background-color 0.3s;
 }
 
-.formulario button:hover {
-  background-color: #a92727;
+.btn-remove:hover {
+  background-color: #c82333;
 }
 
 /* Responsivo */
 @media (max-width: 768px) {
-  .contato-container {
+  .header {
     flex-direction: column;
-    margin: 20px;
+    align-items: flex-start;
   }
 
-  .formulario form {
+  .menu {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cart-item img {
+    margin-bottom: 10px;
+  }
+
+  .total {
+    text-align: left;
+  }
+
+  .btn-pagar {
     width: 100%;
   }
 }

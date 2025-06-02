@@ -1,4 +1,4 @@
-/* Reset básico */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -35,8 +35,6 @@ body {
   margin-top: 5px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  text-decoration: none !important;
-
 }
 
 .menu-container {
@@ -59,15 +57,9 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.logo a {
-  text-decoration: none !important;
-  color: inherit;
-}
-
 .menu a:hover {
   background-color: #f0f0f0;
-  text-decoration: none !important;
-  color: inherit;
+  color: #000;
 }
 
 .menu a.active {
@@ -100,63 +92,41 @@ body {
   padding: 2px 6px;
   border-radius: 50%;
   font-weight: bold;
-  display: none; /* Exibe só se houver itens */
+  display: none;
 }
 
-/* Conteúdo da Página de Contato */
-.contato-container {
-  max-width: 900px;
+/* Página de Checkout */
+.checkout-container {
+  max-width: 600px;
   margin: 50px auto;
-  padding: 20px;
+  padding: 30px;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-  display: flex;
-  gap: 50px;
-  flex-wrap: wrap;
 }
 
-.info {
-  flex: 1 1 350px;
-}
-
-.info h1 {
+.checkout-container h1 {
   font-size: 2rem;
   margin-bottom: 20px;
   color: #333;
 }
 
-.info p {
-  margin-bottom: 15px;
-  font-size: 1rem;
-}
-
-.contato-detalhes p {
-  margin-bottom: 15px;
-}
-
-/* Formulário */
-.formulario {
-  flex: 1 1 350px;
-}
-
-.formulario form {
+.checkout-form {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.formulario input,
-.formulario textarea {
+.checkout-form input,
+.checkout-form select {
   padding: 12px;
   font-size: 1rem;
   border-radius: 6px;
   border: 1px solid #ccc;
-  resize: vertical;
   width: 100%;
 }
 
-.formulario button {
+.checkout-form button {
   background-color: #d32f2f;
   color: white;
   padding: 12px;
@@ -167,26 +137,26 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.formulario button:hover {
+.checkout-form button:hover {
   background-color: #a92727;
 }
 
-/* Responsivo */
-@media (max-width: 768px) {
-  .contato-container {
-    flex-direction: column;
-    margin: 20px;
-  }
-
-  .formulario form {
-    width: 100%;
-  }
-}
-
-/* Fonte customizada */
+/* Fonte personalizada */
 @font-face {
   font-family: 'Playwrite México Guides';
   src: url('Jaro/Jaro-Regular-VariableFont_opsz.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .checkout-container {
+    margin: 20px;
+  }
+
+  .menu {
+    flex-direction: column;
+    gap: 10px;
+  }
 }

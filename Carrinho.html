@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carrinho - 2K Basquete</title>
+  <link rel="stylesheet" href="carrinho.css" />
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+</head>
+<body>
+
+  <!-- Cabeçalho idêntico ao da página de Contato -->
+  <header class="header">
+    <div class="logo">
+      <a href="Página Inicial.html">
+        <img src="Imagens/Logótipo.png" alt="2K Basquete" />
+        <span class="logo-subtitle">BASQUETE</span>
+      </a>
+    </div>
+
+    <div class="menu-container">
+      <nav class="menu">
+        <a href="Página Inicial.html" class="menu-link">Página Inicial</a>
+        <a href="loja.html" class="menu-link">Loja</a>
+        <a href="Contato.html" class="menu-link">Contato</a>
+        <a href="webgrafia.html" class="menu-link">Webgrafia</a>
+      </nav>
+    </div>
+
+    <div class="icons">
+      <a href="perfil.html" class="icon-link">
+        <img src="Imagens/Avatar.png" alt="Perfil" class="icon" />
+      </a>
+      <a href="carrinho.html" class="icon-link cart-wrapper">
+        <img src="Imagens/CestaCompras.png" alt="Carrinho" class="icon" />
+        <span id="cart-count" class="cart-count">0</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Página do Carrinho -->
+  <main class="cart-page">
+    <h1>Carrinho</h1>
+    <div id="cart-items" class="cart-items"></div>
+    <p id="total" class="total"></p>
+    <button id="btn-pagar" class="btn-pagar">PAGAR</button>
+  </main>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBfHgNcgZd6FuKHUH7mmebC7oJFuX8Ihd8",
+      authDomain: "k-basquete.firebaseapp.com",
+      databaseURL: "https://k-basquete-default-rtdb.firebaseio.com",
+      projectId: "k-basquete",
+      storageBucket: "k-basquete.appspot.com",
+      messagingSenderId: "90888323138",
+      appId: "1:90888323138:web:a12465021d65934ea9addb",
+      measurementId: "G-KLZB31L8SG"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    const cartItemsDiv = document.getElementById('cart-items');
+    const totalP = document.getElementById('total');
+    const btnPagar = document.getElementById('btn-pagar');
+
+    function atualizarContadorCarrinho() {
+      db.collection('carrinho').get().then(snapshot => {
+        let total = 0;
+        snapshot.forEach(doc => {
+          total += doc.data().quantidade || 0;
+        });
+        const contador = document.getElementById('cart-count');
+        if (total > 0) {
+          contador.textContent = total;
+          contador.style.display = 'inline-block';
+        } else {
+          contador.style.display = 'none';
+        }
+      });
+    }
+
+    function carregarCarrinho() {
+      db.collection('carrinho').get().then(snapshot => {
+        cartItemsDiv.innerHTML = '';
+        let total = 0;
+        if (snapshot.empty) {
+          cartItemsDiv.innerHTML = '<p>O carrinho está vazio.</p>';
+          totalP.textContent = '';
+          btnPagar.disabled = true;
+          return;
+        }
+        snapshot.forEach(doc => {
+          const item = doc.data();
+          const subtotal = item.preco * item.quantidade;
+          total += subtotal;
+          const itemDiv = document.createElement('div');
+          itemDiv.className = 'cart-item';
+          itemDiv.innerHTML = `
+            <img src="${item.imagem}" alt="${item.nome}" />
+            <div class="item-info">
+              <div class="item-name">${item.nome}</div>
+              <div class="item-price">Preço unitário: €${item.preco.toFixed(2)}</div>
+              <div class="item-qty">Quantidade: ${item.quantidade}</div>
+              <div class="item-total">Subtotal: €${subtotal.toFixed(2)}</div>
+              <button class="btn-remove" onclick="removerDoCarrinho('${doc.id}')">Remover</button>
+            </div>
+          `;
+          cartItemsDiv.appendChild(itemDiv);
+        });
+        totalP.textContent = `Total a pagar: €${total.toFixed(2)}`;
+        btnPagar.disabled = false;
+      });
+    }
+
+    function removerDoCarrinho(id) {
+      db.collection('carrinho').doc(id).delete().then(() => {
+        alert("Item removido do carrinho.");
+        location.reload();
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      atualizarContadorCarrinho();
+      carregarCarrinho();
+    });
+
+    btnPagar.addEventListener('click', () => {
+      const user = firebase.auth().currentUser;
+      if (user) {
+        window.location.href = "checkout.html";
+      } else {
+        alert("Por favor, faça login para continuar com o pagamento.");
+      }
+    });
+  </script>
+</body>
+</html>

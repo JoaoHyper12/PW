@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Obrigado pela sua compra!</title>
+  <link rel="stylesheet" href="agradecimento.css">
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <a href="Página Inicial.html">
+        <img src="Imagens/Logótipo.png" alt="Logotipo">
+        <span class="logo-subtitle">BASQUETE</span>
+      </a>
+    </div>
+    <nav class="menu-container">
+      <div class="menu">
+        <a href="Página Inicial.html">Início</a>
+        <a href="loja.html">Loja</a>
+        <a href="contato.html">Contato</a>
+         <a href="Webgrafia.html">Webgrafia</a>
+      </div>
+    </nav>
+    <div class="icons">
+      <a href="carrinho.html" class="icon-link">
+        <img src="Imagens/CestaCompras.png" alt="Carrinho" class="icon">
+        <span id="cart-count" class="cart-count">0</span>
+      </a>
+        <img src="Imagens/Avatar.png" alt="Perfil" class="icon">
+        <a href="perfil.html" class="icon-link">
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="agradecimento">
+      <h1>Obrigado pela sua compra!</h1>
+      <p>Agradecemos por comprar na nossa loja. Aqui estão os seus produtos:</p>
+      <div id="produtos-comprados" class="produtos"></div>
+      <a href="Página Inicial.html" class="voltar">Voltar para a loja</a>
+    </section>
+
+  </main>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBfHgNcgZd6FuKHUH7mmebC7oJFuX8Ihd8",
+      authDomain: "k-basquete.firebaseapp.com",
+      databaseURL: "https://k-basquete-default-rtdb.firebaseio.com",
+      projectId: "k-basquete",
+      storageBucket: "k-basquete.appspot.com",
+      messagingSenderId: "90888323138",
+      appId: "1:90888323138:web:a12465021d65934ea9addb",
+      measurementId: "G-KLZB31L8SG"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    function atualizarContadorCarrinho() {
+      db.collection('carrinho').get().then(snapshot => {
+        let total = 0;
+        snapshot.forEach(doc => {
+          const dados = doc.data();
+          total += dados.quantidade || 0;
+        });
+
+        const contador = document.getElementById('cart-count');
+        if (total > 0) {
+          contador.textContent = total;
+          contador.style.display = 'inline-block';
+        } else {
+          contador.style.display = 'none';
+        }
+      }).catch(error => {
+        console.error('Erro ao contar produtos no carrinho:', error);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      atualizarContadorCarrinho();
+
+      const container = document.getElementById('produtos-comprados');
+      const produtos = JSON.parse(localStorage.getItem('produtosComprados')) || [];
+
+      if (produtos.length === 0) {
+        container.innerHTML = '<p>Nenhum produto foi encontrado.</p>';
+      } else {
+        produtos.forEach(produto => {
+          const img = document.createElement('img');
+          img.src = produto.imagem || 'placeholder.jpg';
+          img.alt = produto.nome || 'Produto';
+          img.className = 'imagem-produto';
+          container.appendChild(img);
+        });
+      }
+
+      localStorage.removeItem('produtosComprados');
+    });
+  </script>
+</body>
+</html>
