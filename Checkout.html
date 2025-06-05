@@ -54,7 +54,15 @@
       <input type="text" required />
 
       <label>Número do Cartão:</label>
-      <input type="text" placeholder="0000 0000 0000 0000" required />
+<input
+  type="text"
+  placeholder="0000 0000 0000 0000"
+  required
+  maxlength="16"
+  pattern="\d{16}"
+  title="Por favor, insira exatamente 16 dígitos numéricos"
+/>
+
 
       <label>Validade:</label>
       <input type="month" required />

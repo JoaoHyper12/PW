@@ -1,60 +1,5 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Meu Perfil - 2K Basquete</title>
-  <link rel="stylesheet" href="Registo-Login.css" />
-  <style>
-    #btn-sair {
-      display: block;
-      margin-top: 15px;
-      background-color: #e74c3c;
-      color: white;
-      border: none;
-      padding: 10px;
-      width: 100%;
-      font-size: 1rem;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    #btn-sair:hover {
-      background-color: #c0392b;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="left-panel">
-      <div class="logo">
-        <img src="Imagens/Logótipo.png" alt="Logotipo 2K Basquete" />
-        <h1>Basquete</h1>
-      </div>
-    </div>
-    <div class="right-panel">
-      <a href="Página Inicial.html" class="back-arrow">&#8592; Voltar</a>
-      <form id="form-perfil">
-        <h2>Meu Perfil</h2>
-        <p>Atualize suas informações pessoais</p>
 
-        <input type="text" id="nome" placeholder="Nome Completo" required />
-        <input type="email" id="email" placeholder="E-mail" required />
-        <input type="password" id="senha-atual" placeholder="Senha atual" required />
-        <input type="password" id="nova-senha" placeholder="Nova senha" />
-        <input type="password" id="confirma-nova-senha" placeholder="Confirmação da nova senha" />
-
-        <button type="submit">Salvar Alterações</button>
-      </form>
-      <button id="btn-sair">Sair</button>
-    </div>
-  </div>
-
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-
-  <script>
+  window.addEventListener('DOMContentLoaded', () => {
     const firebaseConfig = {
       apiKey: "AIzaSyBGh2mPk0gV-yuHuL4igjaxv_3pI-uIk3E",
       authDomain: "neuro-sphere.firebaseapp.com",
@@ -124,7 +69,6 @@
           alert('Alterações salvas! Verifique seu e-mail para confirmar as mudanças.');
         }
 
-        // Limpa senhas
         document.getElementById('senha-atual').value = '';
         document.getElementById('nova-senha').value = '';
         document.getElementById('confirma-nova-senha').value = '';
@@ -142,6 +86,5 @@
         alert('Erro ao sair: ' + error.message);
       }
     });
-  </script>
-</body>
-</html>
+
+    });

@@ -148,7 +148,7 @@ form input:focus {
   border-color: #457b9d;
 }
 
-button[type="submit"], button#logoutBtn {
+button[type="submit"], button#btn-sair {
   width: 100%;
   padding: 12px;
   background-color: #1d3557;
@@ -160,7 +160,7 @@ button[type="submit"], button#logoutBtn {
   transition: background-color 0.3s ease;
 }
 
-button[type="submit"]:hover, button#logoutBtn:hover {
+button[type="submit"]:hover, button#btn-sair:hover {
   background-color: #16324f;
 }
 
@@ -217,4 +217,37 @@ button[type="submit"]:hover, button#logoutBtn:hover {
   src: url('Jaro/Jaro-Regular-VariableFont_opsz.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+}
+
+/* Estilos específicos para senha e botão sair */
+.input-password-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.input-password-container input {
+  width: 100%;
+  padding-right: 2.5rem; /* espaço para o ícone */
+  box-sizing: border-box;
+}
+.toggle-password {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  user-select: none;
+  color: #333;
+}
+
+#btn-sair {
+  margin-top: 15px;
+  background-color: #e74c3c;
+}
+
+#btn-sair:hover {
+  background-color: #c0392b;
 }
